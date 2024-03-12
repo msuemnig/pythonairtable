@@ -1,0 +1,11 @@
+{% if commercials_list %}
+<ul>
+    {% for commercial in commercials_list %}
+    <li>
+        <a href="/superbowl/commercial/{{ commercial.id }}/">{{ commercial.brand }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>No commercials are available.</p>
+{% endif %}

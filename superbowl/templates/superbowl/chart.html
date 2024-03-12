@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Commercials by brand</h2>
+        <canvas id="anAwesomeChart"></canvas>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('anAwesomeChart');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ brand_list|safe }},
+                datasets: [{
+                    label: 'Commercials by brand',
+                    data: {{ brand_count }},                     
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+{% endblock %}
